@@ -14,7 +14,7 @@ void getPurchase(); // ввод очередной покупки
 
 int main()
 {
-	freopen("input.in", "r", stdin);
+	//freopen("input.in", "r", stdin);
 	while (true)
 	{
 		string s;
@@ -25,7 +25,7 @@ int main()
 	}
 	calculateResult();
 	printResult();
-	system("pause >> void");
+	system("pause > NUL");
 	return 0;
 }
 
@@ -113,6 +113,6 @@ void printResult()
 		for (auto it2 = it1->second.begin(); it2 != it1->second.end(); it2++)
 		{
 			cout << it1->first << " <- " << it2->first << " | ";
-			printf("%.2f\n", it2->second);
+			printf("%.1f\n", it2->second);
 		}
 }
