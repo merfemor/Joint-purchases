@@ -2,6 +2,8 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <cstdio>
+#include <cmath>
 using namespace std;
 
 map <string, map <string, double> > result; // здесь в итоге хранится кто сколько кому должен
@@ -14,7 +16,6 @@ void getPurchase(); // ввод очередной покупки
 
 int main()
 {
-	//freopen("input.in", "r", stdin);
 	while (true)
 	{
 		string s;
@@ -25,7 +26,6 @@ int main()
 	}
 	calculateResult();
 	printResult();
-	system("pause > NUL");
 	return 0;
 }
 
