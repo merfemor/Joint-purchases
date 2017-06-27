@@ -2,28 +2,18 @@ CC=g++
 CFLAGS=-std=c++11
 
 PROGRAM_NAME=joint-purchases
+
 SRC_DIR=src
-BUILD_DIR=build
 OUT_DIR=out
+INSTALL_DIR=/usr/bin/
 
-SRC_NAMES=$(SRC_DIR)/main.cpp
-OBJ_NAMES=$(BUILD_DIR)/main.o
-MAIN_OBJECT_NAME=main.o
-
-install: compile clean-out
-	mkdir $(OUT_DIR)
-	mv $(BUILD_DIR)/$(MAIN_OBJECT_NAME) $(OUT_DIR)/$(PROGRAM_NAME)
-	make clean-build
+install: compile
+	chmod 755 $(OUT_DIR)/$(PROGRAM_NAME)
+	cp $(OUT_DIR)/$(PROGRAM_NAME) $(INSTALL_DIR)
 	
+compile:
+	mkdir -p $(OUT_DIR)
+	$(CC) $(CFLAGS) $(SRC_DIR)/* -o $(OUT_DIR)/$(PROGRAM_NAME)
 
-compile: clean-build
-	mkdir $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(SRC_NAMES) -o $(OBJ_NAMES)
-
-clean-out:
+clean:
 	rm -rf $(OUT_DIR)
-
-clean-build:
-	rm -rf $(BUILD_DIR)
-
-clean: clean-out clean-build
